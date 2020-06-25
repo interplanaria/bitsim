@@ -1,0 +1,22 @@
+{
+  "name": "bitsim",
+  "version": "0.0.15",
+  "description": "bitcoin node simulator controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "null",
+    "node": "docker stop neoregtest; docker system prune --volumes -f; docker run --name neoregtest -d -p 18332-18333:18332-18333 -p 18444:18444 gcr.io/planaria-264019/bitsim:0.0.1"
+  },
+  "keywords": [
+    "bitcoin",
+    "forge",
+    "build"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bsv": "^1.5.3",
+    "toychain": "0.0.22"
+  }
+}
