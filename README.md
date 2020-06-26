@@ -32,9 +32,19 @@ We are going to testdrive bitsim by first booting up a bitsim docker container, 
 
 ## 1. start Bitsim node
 
+### 1a. single peer
+
 ```
-docker run --name bitsim -d -p 18332-18333:18332-18333 -p 18444:18444 planaria/bitsim:0.0.1
+docker run --name bitsim -d -p 18332-18333:18332-18333 -p 18444:18444 planaria/bitsim:0.0.2
 ```
+
+### 2a. multi peer
+
+```
+curl https://raw.githubusercontent.com/interplanaria/bitsim/master/docker-compose.yml > docker-compose.yml && docker-compose up
+```
+
+> [docker-compose](https://docs.docker.com/compose/) is required for multi peer local bitsim network
 
 ## 2. enter NodeJS REPL
 
@@ -120,9 +130,21 @@ bitsim.getLatestHeader().then(r => console.log(r); newHeight = r.height; )
 
 ## 1. initialize
 
+### 1a. single peer
+
 ```javascript
 const Bitsim = require('bitsim')
 const bitsim = new Bitsim()
+
+```
+
+### 1b. multi peer
+
+```javascript
+const Bitsim = require('bitsim')
+const bitsim1 = new Bitsim({ rpc: 'http://root:bitcoin@127.0.0.1:18332' })
+const bitsim2 = new Bitsim({ rpc: 'http://root:bitcoin@127.0.0.1:17332' })
+const bitsim3 = new Bitsim({ rpc: 'http://root:bitcoin@127.0.0.1:16332' })
 ```
 
 ## 2. core methods
@@ -194,6 +216,8 @@ const bitsim = new Bitsim()
 
 # settings
 
+## nodejs
+
 pass configuration options to bitsim as an object on initialization:
 
 ```javascript
@@ -207,4 +231,9 @@ const bitsim = new Bitsim({
 
 > NOTE: The above represents the default configuration, and need not be specified for most basic single-player mode use cases. 
 
+## docker
+
+When running Bitsim in __multi peer network mode__, the provided script provides simple example but you may customize the `docker-compose.yml` as desired. 
+
+![dock.png](./images/dock.png)
 
