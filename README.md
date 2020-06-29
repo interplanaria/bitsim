@@ -11,6 +11,9 @@ bitsim is the controller for the your bitcoin simulation environment. bitsim con
 ![d3](./images/d3.png)
 
 > NOTE: Bitsim node is a modified version of a "regtest mode" which supports mainnet address format and mainnet magic bytes. This allows more seamless plug and play testing environment for applications.
+>
+> Source code for the Bitsim Node is available [here](https://github.com/interplanaria/bitsim_node).
+
 
 ---
 
@@ -40,11 +43,12 @@ docker run --name bitsim -d -p 18332-18333:18332-18333 -p 18444:18444 planaria/b
 
 ### 2a. multi peer
 
-```
+```bash
 curl https://raw.githubusercontent.com/interplanaria/bitsim/master/docker-compose.yml > docker-compose.yml && docker-compose up
 ```
 
-> [docker-compose](https://docs.docker.com/compose/) is required for multi peer local bitsim network
+> NOTE: [Docker-compose](https://docs.docker.com/compose/) is required for multi peer quickstart script
+
 
 ## 2. enter NodeJS REPL
 
@@ -52,9 +56,9 @@ curl https://raw.githubusercontent.com/interplanaria/bitsim/master/docker-compos
 node
 ```
 
-> for more information on how to use NodeJS REPL, see the [docs](https://nodejs.org/api/repl.html)
+> For more information on how to use NodeJS REPL, see the [docs](https://nodejs.org/api/repl.html).
 
-> we will be using [`.then`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) syntax to read the callbacks in realtime without async scope. it's worth noting that ordinarily, you'd probably want to use async/await. 
+> NOTE: We will be using [`.then`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) syntax to read the callbacks in realtime without async scope. it's worth noting that ordinarily, you'd probably want to use async/await. 
 
 ## 3. initialize new Bitsim controller
 
